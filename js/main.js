@@ -45,38 +45,26 @@
     //     })
     // });
 
+    // Modal Video
     $(document).ready(function () {
 
-        let videoSrc = "";
-        const audio = document.getElementById("audioCumple");
+        var $videoSrc;
 
-        // Cuando se haga clic en el botón PLAY
         $('.btn-play').click(function () {
-            videoSrc = $(this).data("src");
+            $videoSrc = $(this).data("src"); // ejemplo: "video/mi_video.mp4"
         });
 
-        // Cuando se abre el modal
+        // cuando abre el modal
         $('#videoModal').on('shown.bs.modal', function () {
-
-            // Pausar música de fondo
-            if (audio) audio.pause();
-
-            // Agregar autoplay al video
-            $("#video").attr('src', videoSrc);
-            $("#video")[0].play();
+            $("#video").attr('src', $videoSrc);
         });
 
-        // Cuando se cierra el modal
+        // cuando se cierra el modal
         $('#videoModal').on('hide.bs.modal', function () {
-
-            // Detener video
-            $("#video")[0].pause();
-            $("#video").attr('src', "");
-
-            // Reanudar música de fondo
-            if (audio) audio.play();
+            $("#video").attr('src', '');
         });
     });
+
 
 
 
